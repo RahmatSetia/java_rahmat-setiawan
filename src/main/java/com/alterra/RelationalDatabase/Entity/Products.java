@@ -41,10 +41,16 @@ public class Products {
     @JoinColumn(name = "category_id", nullable = false, insertable = false, updatable = false)
     private Categories categories;
 
-    //public Products() {};
+    //many to one dengan brands
     @JsonBackReference
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "brand_id", nullable = false, insertable = false, updatable = false)
     private Brands brands;
+
+    //one to one dengan stocks
+    @JsonBackReference
+    @OneToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "id", nullable = false, insertable = false, updatable = false)
+    private Stocks stocks;
 }
 

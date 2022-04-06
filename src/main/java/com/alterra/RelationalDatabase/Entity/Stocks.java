@@ -1,10 +1,12 @@
 package com.alterra.RelationalDatabase.Entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -21,4 +23,8 @@ public class Stocks {
 
     @Column(name = "quantity")
     private Integer quantity;
+
+    @JsonManagedReference
+    @OneToOne(mappedBy = "stocks")
+    private Products products;
 }
